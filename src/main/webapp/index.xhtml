@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Gepardec Database Speed Test</title>
+</h:head>
+<body>
+	<h:form id="form">
+		<div>
+			<h:panelGrid id="insert" columns="1">
+				<h2>Insert Records into the database</h2>
+				<h:outputLabel value="Number of records:" />
+				<h:inputText id="numRecords" value="#{speedController.numRecords}" />
+				<h:commandButton action="#{speedController.insert()}"
+					value="Start Insert">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:outputText
+					value="#{speedController.numRecords} Records successfully inserted in #{speedController.time}ms."
+					rendered="#{speedController.insertFinished}" />
+			</h:panelGrid>
+
+			<h:panelGrid id="select" columns="1">
+				<h2>Select Records from the database</h2>
+				<h:commandButton action="#{speedController.select()}"
+					value="Start Select">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:outputText
+					value="#{speedController.numRecords} Records successfully selected in #{speedController.time}ms."
+					rendered="#{speedController.selectFinished}" />
+			</h:panelGrid>
+
+			<h:panelGrid id="merge" columns="1">
+				<h2>Merge Records from the database</h2>
+				<h:commandButton action="#{speedController.merge()}"
+					value="Start Merge">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:outputText
+					value="#{speedController.numRecords} Records successfully merged in #{speedController.time}ms."
+					rendered="#{speedController.mergeFinished}" />
+			</h:panelGrid>
+
+			<h:panelGrid id="selectAndModify" columns="1">
+				<h2>SelectAndModify Records from the database</h2>
+				<h:commandButton action="#{speedController.selectAndModify()}"
+					value="Start selectAndModify">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:outputText
+					value="#{speedController.numRecords} Records successfully selectAndModified in #{speedController.time}ms."
+					rendered="#{speedController.selectAndModifyFinished}" />
+			</h:panelGrid>
+
+			<h:panelGrid id="delete" columns="1">
+				<h2>Delete Records from the database</h2>
+				<h:commandButton action="#{speedController.delete()}"
+					value="Start Delete">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:outputText
+					value="#{speedController.numRecords} Records successfully deleted in #{speedController.time}ms."
+					rendered="#{speedController.deleteFinished}" />
+			</h:panelGrid>
+			<div>
+				<h:messages globalOnly="true" errorStyle="color: red;"
+					warnStyle="color: yellow;" />
+			</div>
+		</div>
+	</h:form>
+</body>
+</html>
