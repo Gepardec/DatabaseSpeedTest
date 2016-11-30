@@ -1,9 +1,7 @@
 package com.gepardec.speedtest.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class GepardecSpeedTestTempTable {
@@ -11,8 +9,6 @@ public class GepardecSpeedTestTempTable {
 	@Id
 	private Integer id;
 
-	@NotNull
-	@Column(unique = true)
 	private String name;
 
 	public Integer getId() {
