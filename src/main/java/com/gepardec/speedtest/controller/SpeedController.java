@@ -34,7 +34,7 @@ public class SpeedController {
 	private boolean deleteFinished;
 
 
-	public void insert() {
+	public String insert() {
 
 		log.info("insert started");
 		stopWatch.start();
@@ -43,9 +43,10 @@ public class SpeedController {
 		setTime(stopWatch.getTime());
 		log.info("insert finished after milliseconds: " + getTime());
 		insertFinished = true;
+		return "index.xhtml";
 	}
 
-	public void select() {
+	public String select() {
 
 		log.info("select started");
 		stopWatch.start();
@@ -54,9 +55,10 @@ public class SpeedController {
 		setTime(stopWatch.getTime());
 		log.info("select finished after milliseconds: " + getTime());
 		selectFinished = true;
+		return "index.xhtml";
 	}
 
-	public void merge() {
+	public String merge() {
 
 		log.info("merge started");
 		stopWatch.start();
@@ -65,9 +67,10 @@ public class SpeedController {
 		setTime(stopWatch.getTime());
 		log.info("merge finished after milliseconds: " + getTime());
 		mergeFinished = true;
+		return "index.xhtml";
 	}
 
-	public void selectAndModify() {
+	public String selectAndModify() {
 
 		log.info("selectAndModify started");
 		stopWatch.start();
@@ -76,9 +79,10 @@ public class SpeedController {
 		setTime(stopWatch.getTime());
 		log.info("selectAndModify finished after milliseconds: " + getTime());
 		selectAndModifyFinished = true;
+		return "index.xhtml";
 	}
 
-	public void delete() {
+	public String delete() {
 
 		log.info("delete started");
 		stopWatch.start();
@@ -87,6 +91,7 @@ public class SpeedController {
 		setTime(stopWatch.getTime());
 		log.info("delete finished after milliseconds: " + getTime());
 		deleteFinished = true;
+		return "index.xhtml";
 	}
 
 	public Integer getNumRecords() {
