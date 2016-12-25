@@ -1,0 +1,45 @@
+<h:panelGrid xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" columns="1" border="1">
+	<f:facet name="header">
+		<h:commandButton value="NORMAL" action="#{normalController.all()}"/>
+	</f:facet>
+	<h:panelGrid id="normal_insert" columns="1">
+		<h:commandButton action="#{normalController.insert()}" value="Insert">
+		</h:commandButton>
+		<h:outputText
+			value="#{speedTestController.numRecords} Records successfully inserted in #{normalData.insertTime}ms." />
+	</h:panelGrid>
+
+	<h:panelGrid id="normal_select" columns="1">
+		<h:commandButton action="#{normalController.select()}" value="Select"
+			update=":message">
+		</h:commandButton>
+		<h:outputText
+			value="#{speedTestController.numRecords} Records successfully selected in #{normalData.selectTime}ms." />
+	</h:panelGrid>
+
+	<h:panelGrid id="normal_merge" columns="1">
+		<h:commandButton action="#{normalController.merge()}" value="Merge">
+			<f:ajax execute="@form" render="@form" />
+		</h:commandButton>
+		<h:outputText
+			value="#{speedTestController.numRecords} Records successfully merged in #{normalData.mergeTime}ms." />
+	</h:panelGrid>
+
+	<h:panelGrid id="normal_selectAndModify" columns="1">
+		<h:commandButton action="#{normalController.selectAndModify()}"
+			value="SelectAndModify">
+		</h:commandButton>
+		<h:outputText
+			value="#{speedTestController.numRecords} Records successfully selectAndModified in #{normalData.selectAndModifyTime}ms." />
+	</h:panelGrid>
+
+	<h:panelGrid id="normal_delete" columns="1">
+		<h:commandButton action="#{normalController.delete()}" value="Delete">
+		</h:commandButton>
+		<h:outputText
+			value="#{speedTestController.numRecords} Records successfully deleted in #{normalData.deleteTime}ms." />
+	</h:panelGrid>
+</h:panelGrid>

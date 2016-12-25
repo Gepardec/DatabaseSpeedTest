@@ -1,0 +1,45 @@
+<h:panelGrid xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" columns="1" border="1">
+	<f:facet name="header">
+		<h:commandButton value="Batchsize 20" action="#{batchsizeController.all()}"/>
+	</f:facet>
+	<h:panelGrid id="batchsizeinsert" columns="1">
+		<h:commandButton action="#{batchsizeController.insert()}" value="Insert">
+		</h:commandButton>
+		<h:outputText
+			value="#{speedTestController.numRecords} Records successfully inserted in #{batchsizeData.insertTime}ms." />
+	</h:panelGrid>
+
+	<h:panelGrid id="batchsizeselect" columns="1">
+		<h:commandButton action="#{batchsizeController.select()}" value="Select"
+			update=":message">
+		</h:commandButton>
+		<h:outputText
+			value="#{speedTestController.numRecords} Records successfully selected in #{batchsizeData.selectTime}ms." />
+	</h:panelGrid>
+
+	<h:panelGrid id="batchsizemerge" columns="1">
+		<h:commandButton action="#{batchsizeController.merge()}" value="Merge">
+			<f:ajax execute="@form" render="@form" />
+		</h:commandButton>
+		<h:outputText
+			value="#{speedTestController.numRecords} Records successfully merged in #{batchsizeData.mergeTime}ms." />
+	</h:panelGrid>
+
+	<h:panelGrid id="batchsizeselectAndModify" columns="1">
+		<h:commandButton action="#{batchsizeController.selectAndModify()}"
+			value="SelectAndModify">
+		</h:commandButton>
+		<h:outputText
+			value="#{speedTestController.numRecords} Records successfully selectAndModified in #{batchsizeData.selectAndModifyTime}ms." />
+	</h:panelGrid>
+
+	<h:panelGrid id="batchsizedelete" columns="1">
+		<h:commandButton action="#{batchsizeController.delete()}" value="Delete">
+		</h:commandButton>
+		<h:outputText
+			value="#{speedTestController.numRecords} Records successfully deleted in #{batchsizeData.deleteTime}ms." />
+	</h:panelGrid>
+</h:panelGrid>

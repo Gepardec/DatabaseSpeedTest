@@ -1,4 +1,4 @@
-package com.gepardec.speedtest.model;
+package com.gepardec.speedtest.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

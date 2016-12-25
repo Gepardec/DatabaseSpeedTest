@@ -8,12 +8,14 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import com.gepardec.speedtest.model.GepardecSpeedTestTempTable;
+import com.gepardec.speedtest.domain.GepardecSpeedTestTempTable;
+import com.gepardec.speedtest.util.WithBatchsize;
 
 @Stateless
-public class SpeedService {
+public class BatchService {
 
 	@Inject
+	@WithBatchsize
 	private EntityManager em;
 
 	@Inject

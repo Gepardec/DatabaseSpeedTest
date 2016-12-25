@@ -17,5 +17,5 @@ A datasource with jndi-name "java:/speedtest" has to be defined in the standalon
 		</security>
     </datasource>
 
-The application creates a table GepardecSpeedTestTempTable at startup, which has to be deleted manually.
+The application creates a table GepardecSpeedTestTempTable at startup.
 After the deployment point your browser to http://host:port/database-speed-test/ and start testing.

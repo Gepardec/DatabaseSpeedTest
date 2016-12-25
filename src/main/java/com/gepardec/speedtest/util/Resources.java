@@ -10,8 +10,14 @@ import javax.persistence.PersistenceContext;
 public class Resources {
 
 	@Produces
-	@PersistenceContext
+	@PersistenceContext(unitName="normal")
+	@Normal
 	private EntityManager em;
+	
+	@Produces
+	@PersistenceContext(unitName="batchsize")
+	@WithBatchsize
+	private EntityManager emNormal;
 
 	@Produces
 	public Logger produceLog(InjectionPoint injectionPoint) {

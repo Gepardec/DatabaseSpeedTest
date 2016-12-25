@@ -8,62 +8,19 @@
 </h:head>
 <body>
 	<h:form id="form">
+		<h:panelGrid columns="2" border="1">
+			<f:facet name="header">
+				<h:outputText value="Number of records: " />
+				<h:inputText id="numRecords"
+					value="#{speedTestController.numRecords}"
+					style="margin-bottom:20px; width:100px;" />
+				<h:commandButton value="Database Speedtest" action="#{speedTestController.all()}" />
+			</f:facet>
+			<ui:include src="insert/normal.xhtml" />
+			<ui:include src="insert/batchsize.xhtml" />
+		</h:panelGrid>
 		<div>
-			<h:panelGrid id="insert" columns="1">
-				<h2>Insert Records into the database</h2>
-				<h:outputLabel value="Number of records:" />
-				<h:inputText id="numRecords" value="#{speedController.numRecords}" />
-				<h:commandButton action="#{speedController.insert()}"
-					value="Start Insert">
-				</h:commandButton>
-				<h:outputText
-					value="#{speedController.numRecords} Records successfully inserted in #{speedController.time}ms."
-					rendered="#{speedController.insertFinished}" />
-			</h:panelGrid>
-
-			<h:panelGrid id="select" columns="1">
-				<h2>Select Records from the database</h2>
-				<h:commandButton action="#{speedController.select()}"
-					value="Start Select" update=":message">
-				</h:commandButton>
-				<h:outputText
-					value="#{speedController.numRecords} Records successfully selected in #{speedController.time}ms."
-					rendered="#{speedController.selectFinished}" />
-			</h:panelGrid>
-
-			<h:panelGrid id="merge" columns="1">
-				<h2>Merge Records from the database</h2>
-				<h:commandButton action="#{speedController.merge()}"
-					value="Start Merge">
-					<f:ajax execute="@form" render="@form" />
-				</h:commandButton>
-				<h:outputText
-					value="#{speedController.numRecords} Records successfully merged in #{speedController.time}ms."
-					rendered="#{speedController.mergeFinished}" />
-			</h:panelGrid>
-
-			<h:panelGrid id="selectAndModify" columns="1">
-				<h2>SelectAndModify Records from the database</h2>
-				<h:commandButton action="#{speedController.selectAndModify()}"
-					value="Start selectAndModify">
-				</h:commandButton>
-				<h:outputText
-					value="#{speedController.numRecords} Records successfully selectAndModified in #{speedController.time}ms."
-					rendered="#{speedController.selectAndModifyFinished}" />
-			</h:panelGrid>
-
-			<h:panelGrid id="delete" columns="1">
-				<h2>Delete Records from the database</h2>
-				<h:commandButton action="#{speedController.delete()}"
-					value="Start Delete">
-				</h:commandButton>
-				<h:outputText
-					value="#{speedController.numRecords} Records successfully deleted in #{speedController.time}ms."
-					rendered="#{speedController.deleteFinished}" />
-			</h:panelGrid>
-			<div>
-				<h:messages id="message" globalOnly="true"/>
-			</div>
+			<h:messages id="message" globalOnly="true" />
 		</div>
 	</h:form>
 </body>
